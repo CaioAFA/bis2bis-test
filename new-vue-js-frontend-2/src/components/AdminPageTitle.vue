@@ -19,5 +19,6 @@ h1 {
     background-color: lightgray;
     padding: 60px 0;
     margin: 0;
+    font-style: italic;
 }
 </style>

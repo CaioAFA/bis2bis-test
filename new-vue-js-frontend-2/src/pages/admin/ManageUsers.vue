@@ -1,7 +1,5 @@
 <template>
   <AdminPageWrapper title="Gerenciar Usuários">
-    Usuários
-
     <v-simple-table id="manage-users-table">
       <template v-slot:default>
         <thead>
@@ -24,7 +22,6 @@
               <v-checkbox
                 v-model="user.can_manage_posts"
                 disabled
-                class="abc"
               />
             </td>
 
@@ -32,7 +29,6 @@
               <v-checkbox
                 v-model="user.can_manage_users"
                 disabled
-                class="abc"
               />
             </td>
 
@@ -40,41 +36,57 @@
               <v-checkbox
                 v-model="user.can_manage_dumps"
                 disabled
-                class="abc"
               />
             </td>
 
             <td class="text-center">
-              <v-icon left @click="console.log('editRegister')">mdi-pencil</v-icon>
-              <v-icon right @click="console.log('deleteRegister')">mdi-cancel</v-icon>
+              <AdminManageUsersDialog
+                :inputUser="user"
+              />
+
+              <AdminManagerUsersDeleteDialog
+                :user="user"
+              />
             </td>
           </tr>
         </tbody>
       </template>
     </v-simple-table>
+
   </AdminPageWrapper>
 </template>
 
 <script>
 import AdminPageWrapper from "../../components/AdminPageWrapper";
+import AdminManageUsersDialog from "../../components/AdminManageUsersDialog.vue";
+import AdminManagerUsersDeleteDialog from '../../components/AdminManagerUsersDeleteDialog.vue'
 
 export default {
-  components: {
-    AdminPageWrapper,
-  },
-  data() {
-    return {
-      users: [
-        {
-          email: "caio.a.1998@gmail.com",
-          name: "Caio Arrabal",
-          can_manage_posts: true,
-          can_manage_users: false,
-          can_manage_dumps: true,
-        },
-      ],
-    };
-  },
+    components: {
+        AdminPageWrapper,
+        AdminManageUsersDialog,
+        AdminManagerUsersDeleteDialog
+    },
+    data() {
+        return {
+            users: [
+                {
+                    email: "caio.a.1998@gmail.com",
+                    name: "Caio Arrabal",
+                    can_manage_posts: true,
+                    can_manage_users: false,
+                    can_manage_dumps: true,
+                },
+                {
+                    email: "joao.a.1998@gmail.com",
+                    name: "João Arrabal",
+                    can_manage_posts: false,
+                    can_manage_users: false,
+                    can_manage_dumps: true,
+                },
+            ],
+        };
+    },
 };
 </script>
 
@@ -92,7 +104,7 @@ export default {
 }
 
 .color-red {
-    color: red!important;;
+  color: red !important;
 }
 </style>
 
