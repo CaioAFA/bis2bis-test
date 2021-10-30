@@ -22,6 +22,22 @@ body {
   padding: 0;
   height: 100vh;
 }
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.color-red {
+  color: red !important;
+}
 </style>
 
 <style scoped>
