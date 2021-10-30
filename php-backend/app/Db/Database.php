@@ -134,8 +134,6 @@ class Database{
              '    ON first_table.' . $firstTableOnField . ' = second_table.' . $secondTableOnField .
              ' ' . $where.' '.$order.' '.$limit;
 
-    echo $query;
-
     //EXECUTA A QUERY
     return $this->execute($query);
   }

@@ -11,18 +11,20 @@ class PostRepository {
    * @return boolean
    */
   public function insertPost(\App\Models\PostModel $post){
-    $post->created_at = date('Y-m-d H:i:s');
-    $post->edited_at = date('Y-m-d H:i:s');
+    $post->setCreatedAt(date('Y-m-d H:i:s'));
+    $post->setEditedAt(date('Y-m-d H:i:s'));
 
     $obDatabase = new Database('post');
-    $post->id = $obDatabase->insert([
-      'admin_id' => $post->admin_id,
-      'title' => $post->title,
-      'content' => $post->content,
-      'image' => $post->image,
-      'created_at' => $post->created_at,
-      'edited_at' => $post->edited_at,
-    ]);
+    $post->setId(
+      $obDatabase->insert([
+        'admin_id' => $post->getAdminId(),
+        'title' => $post->getTitle(),
+        'content' => $post->getContent(),
+        'image' => $post->getImage(),
+        'created_at' => $post->getCreatedAt(),
+        'edited_at' => $post->getEditedAt(),
+      ])
+    );
 
     return true;
   }
@@ -35,9 +37,6 @@ class PostRepository {
    * @return array
    */
   public static function getPosts($where = null, $order = null, $limit = null){
-    // return (new Database('post'))->select($where,$order,$limit)
-    //                               ->fetchAll(PDO::FETCH_CLASS,\App\Models\PostModel::class);
-
     return (new Database('post'))->selectWithInnerJoin('admin', 'id', 'admin_id', $where, $order, $limit, 'first_table.*, second_table.name')
                                   ->fetchAll(PDO::FETCH_CLASS,\App\Models\PostModel::class);
   }
@@ -49,7 +48,7 @@ class PostRepository {
    */
   public static function getPost($id){
     return (new Database('post'))->selectWithInnerJoin('admin', 'id', 'admin_id', 'first_table.id = ' . $id, null, null, 'first_table.*, second_table.name')
-                                  ->fetchObject(self::class);
+                                  ->fetchObject(\App\Models\PostModel::class);
   }
 
   /**
@@ -65,14 +64,14 @@ class PostRepository {
    * @return boolean
    */
   public function updatePost(\App\Models\PostModel $post){
-    $post->edited_at = date('Y-m-d H:i:s');
+    $post->setEditedAt(date('Y-m-d H:i:s'));
 
-    return (new Database('post'))->update('id = ' . $post->id, [
-      'admin_id' => $post->admin_id,
-      'title' => $post->title,
-      'content' => $post->content,
-      'image' => $post->image,
-      'edited_at' => $post->edited_at,
+    return (new Database('post'))->update('id = ' . $post->getId(), [
+      'admin_id' => $post->getAdminId(),
+      'title' => $post->getTitle(),
+      'content' => $post->getContent(),
+      'image' => $post->getImage(),
+      'edited_at' => $post->getEditedAt(),
     ]);
   }
 
