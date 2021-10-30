@@ -7,7 +7,7 @@ use \PDO;
 
 class AdminRepository {
 
-  public function insertAdmin(\App\Models\AdminModel $admin){
+  public static function insertAdmin(\App\Models\AdminModel $admin){
     $adminDatabase = new Database('admin');
     
     $admin->setId(
@@ -38,7 +38,7 @@ class AdminRepository {
     return (new Database('admin'))->delete('id = ' . $id);
   }
 
-  public function updateAdmin(\App\Models\AdminModel $admin){
+  public static function updateAdmin(\App\Models\AdminModel $admin){
     return (new Database('admin'))->update('id = ' . $admin->getId(), [
       'name' => $admin->getName(),
       'email' => $admin->getEmail(),
@@ -49,4 +49,9 @@ class AdminRepository {
     ]);
   }
 
+  public static function getAdminByEmailAndPassword($email, $password){
+    $where = 'email = "' . $email . '" AND password = "' . $password . '"';
+    return (new Database('admin'))->select($where)
+                                    ->fetchObject(\App\Models\AdminModel::class);
+  }
 }
