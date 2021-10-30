@@ -1,0 +1,8 @@
+{
+  "name":"caio_arrabal/cb_blog",
+  "autoload":{
+    "psr-4":{
+      "App\\":"app/"
+    }
+  }
+}
