@@ -3,6 +3,7 @@
 namespace App\Routes;
 
 use App\Response\Response;
+use App\Session\Session;
 
 class Route {
   public static function handleRouteMethods($routes){
@@ -10,12 +11,17 @@ class Route {
 
     $controller = null;
 
-    if(isset($routes[$method])){
-      $controller = $routes[$method]['controller'];
+    $r = $routes[$method];
+    if(isset($r)){
+      $controller = $r['controller'];
     }
 
     if(!isset($controller)){
       Response::sendMethodNotAllowedResponse();
+    }
+
+    if($r['requireAuth'] && Session::getAdminSession()){
+      Response::sendUnhauthorizedResponse();
     }
 
     $controller->execute();

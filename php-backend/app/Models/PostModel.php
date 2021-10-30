@@ -71,4 +71,16 @@ class PostModel {
 	public function setEditedAt($edited_at){
 		$this->edited_at = $edited_at;
 	}
+
+	public function toArray(){
+		return [
+			'id' => $this->getId(),
+			'adminId' => $this->getAdminId(),
+			'title' => $this->getTitle(),
+			'content' => $this->getContent(),
+			'image' => $this->getImage(),
+			'createdAt' => $this->getCreatedAt(),
+			'editedAt' => $this->getEditedAt(),
+		];
+	}
 }
