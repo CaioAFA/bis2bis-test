@@ -7,7 +7,7 @@
         <v-col cols="12" id="content-wrapper">
           <p>{{ post.content | truncate(500) }}</p>
 
-          <img class="img-thumb" :src="post.image" :alt="post.title" />
+          <img v-if="post.image" class="img-thumb" :src="post.image" :alt="post.title" />
         </v-col>
       </v-col>
     </template>
@@ -24,7 +24,7 @@
             </v-col>
 
             <v-col class="justify-content-center" cols="12">
-              <img class="dialog-img" :src="post.image" :alt="post.title">
+              <img v-if="post.image" class="dialog-img" :src="post.image" :alt="post.title">
             </v-col>
 
             <v-col cols="12">
