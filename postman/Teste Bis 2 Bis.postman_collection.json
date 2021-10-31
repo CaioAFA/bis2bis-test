@@ -14,9 +14,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://teste-bis2bis.com.br/Post.php",
+							"raw": "http://api.teste-bis2bis.com.br/Post.php",
 							"protocol": "http",
 							"host": [
+								"api",
 								"teste-bis2bis",
 								"com",
 								"br"
@@ -43,9 +44,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://teste-bis2bis.com.br/Post.php",
+							"raw": "http://api.teste-bis2bis.com.br/Post.php",
 							"protocol": "http",
 							"host": [
+								"api",
 								"teste-bis2bis",
 								"com",
 								"br"
@@ -72,9 +74,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://teste-bis2bis.com.br/Post.php",
+							"raw": "http://api.teste-bis2bis.com.br/Post.php",
 							"protocol": "http",
 							"host": [
+								"api",
 								"teste-bis2bis",
 								"com",
 								"br"
@@ -101,9 +104,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://teste-bis2bis.com.br/Post.php",
+							"raw": "http://api.teste-bis2bis.com.br/Post.php",
 							"protocol": "http",
 							"host": [
+								"api",
 								"teste-bis2bis",
 								"com",
 								"br"
@@ -135,9 +139,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://teste-bis2bis.com.br/Admin.php",
+							"raw": "http://api.teste-bis2bis.com.br/Admin.php",
 							"protocol": "http",
 							"host": [
+								"api",
 								"teste-bis2bis",
 								"com",
 								"br"
@@ -164,9 +169,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://teste-bis2bis.com.br/Admin.php",
+							"raw": "http://api.teste-bis2bis.com.br/Admin.php",
 							"protocol": "http",
 							"host": [
+								"api",
 								"teste-bis2bis",
 								"com",
 								"br"
@@ -193,9 +199,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://teste-bis2bis.com.br/Admin.php",
+							"raw": "http://api.teste-bis2bis.com.br/Admin.php",
 							"protocol": "http",
 							"host": [
+								"api",
 								"teste-bis2bis",
 								"com",
 								"br"
@@ -213,15 +220,120 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://teste-bis2bis.com.br/Admin.php",
+							"raw": "http://api.teste-bis2bis.com.br/Admin.php",
 							"protocol": "http",
 							"host": [
+								"api",
 								"teste-bis2bis",
 								"com",
 								"br"
 							],
 							"path": [
 								"Admin.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dumps",
+			"item": [
+				{
+					"name": "Dumps Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api.teste-bis2bis.com.br/Dumps.php",
+							"protocol": "http",
+							"host": [
+								"api",
+								"teste-bis2bis",
+								"com",
+								"br"
+							],
+							"path": [
+								"Dumps.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dumps Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://api.teste-bis2bis.com.br/Dumps.php",
+							"protocol": "http",
+							"host": [
+								"api",
+								"teste-bis2bis",
+								"com",
+								"br"
+							],
+							"path": [
+								"Dumps.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dumps Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"2021-10-31_11:52:14.sql\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api.teste-bis2bis.com.br/Dumps.php",
+							"protocol": "http",
+							"host": [
+								"api",
+								"teste-bis2bis",
+								"com",
+								"br"
+							],
+							"path": [
+								"Dumps.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dump Download",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api.teste-bis2bis.com.br/DumpsDownload.php?filename=2021-10-31_11:52:12.sql",
+							"protocol": "http",
+							"host": [
+								"api",
+								"teste-bis2bis",
+								"com",
+								"br"
+							],
+							"path": [
+								"DumpsDownload.php"
+							],
+							"query": [
+								{
+									"key": "filename",
+									"value": "2021-10-31_11:52:12.sql"
+								}
 							]
 						}
 					},
@@ -244,9 +356,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://teste-bis2bis.com.br/Authorization.php",
+					"raw": "http://api.teste-bis2bis.com.br/Authorization.php",
 					"protocol": "http",
 					"host": [
+						"api",
 						"teste-bis2bis",
 						"com",
 						"br"
@@ -264,9 +377,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://teste-bis2bis.com.br/Authorization.php",
+					"raw": "http://api.teste-bis2bis.com.br/Authorization.php",
 					"protocol": "http",
 					"host": [
+						"api",
 						"teste-bis2bis",
 						"com",
 						"br"

@@ -25,6 +25,6 @@ class DumpsPost {
 
     exec($command, $output, $retval);
 
-    Response::sendJsonResponse('POST');
+    Response::sendOkResponse();
   }
 }
