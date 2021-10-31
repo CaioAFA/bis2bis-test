@@ -15,6 +15,10 @@ class PostsPut {
 
     $data = Request::getPayload();
 
+    if(!isset($data['id'])){
+      Response::sendErrorResponse("Informe um ID");
+    }
+    
     $post = PostRepository::getPost($data['id']);
 
     if(!$post){
@@ -27,6 +31,12 @@ class PostsPut {
     $post->setContent($data['content']);
     $post->setImage($data['image']);
     $post->setAdminId($session['id']);
+
+    $error = $post->validate(true);
+    if($error){
+      Response::sendErrorResponse($error);
+    }
+
 
     PostRepository::updatePost($post);
 

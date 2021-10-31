@@ -93,4 +93,24 @@ class PostModel {
 			'authorName' => $this->getAuthorName()
 		];
 	}
+
+	public function validate($isEditing = false){
+		if($isEditing && !$this->getId()){
+			return "ID não pode ser vazio";
+		}
+
+		if(!$this->getAdminId()){
+			return "Admin Id não pode ser vazio";
+		}
+		
+		if(!strlen($this->getTitle())){
+			return "Título não pode ser vazio";
+		}
+
+		if(!strlen($this->getContent())){
+			return "Conteúdo não pode ser vazio";
+		}
+
+		return null;
+	}
 }

@@ -24,6 +24,11 @@ class PostsPost {
     $newPost->setImage($data['image']);
     $newPost->setAdminId($session['id']);
 
+    $error = $newPost->validate(false);
+    if($error){
+      Response::sendErrorResponse($error);
+    }
+
     PostRepository::insertPost($newPost);
 
     Response::sendJsonResponse();
