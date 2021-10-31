@@ -24,6 +24,13 @@ class Session {
   }
 
   public static function initSession(){
+    session_set_cookie_params(
+      3600,
+      '/',
+      '.teste-bis2bis.com.br',
+      false,
+      false
+    );
     session_start();
   }
 }

@@ -16,13 +16,25 @@
       <li>
         <router-link to="/admin/backup">Backup</router-link>
       </li>
+
+      <li @click="logoutHandler" id="logout-button">
+        <span>Logout</span>
+      </li>
     </ul>
 
   </aside>
 </template>
 
 <script>
+import { logout } from '../api/authentication'
+
 export default {
+  methods: {
+    logoutHandler(){
+      logout()
+      window.location.reload()
+    }
+  }
 }
 </script>
 
@@ -92,12 +104,17 @@ aside a:visited{
   color: white;
 }
 
-aside a:hover{
+aside a:hover, #logout-button span:hover{
   text-decoration: underline;
 }
 
 .link-active {
   color: navajowhite !important;
+}
+
+#logout-button{
+  color: white;
+  cursor: pointer;
 }
 
 ::-webkit-scrollbar {

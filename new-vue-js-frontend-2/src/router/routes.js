@@ -5,6 +5,10 @@ import PageNotFound from '../components/PageNotFound'
 import AdminManagePostsPage from '../pages/admin/ManagePosts'
 import AdminManageUsersPage from '../pages/admin/ManageUsers'
 import AdminBackupPage from '../pages/admin/Backup'
+import AdminLoginPage from '../pages/admin/Login'
+import AdminHomePage from '../pages/admin/Home'
+
+import { isAuthenticated } from '../api/authentication'
 
 Vue.use(VueRouter)
 
@@ -14,16 +18,37 @@ export default new VueRouter({
 
     routes: [
         {
+            path: '/admin/login',
+            alias: '/admin',
+            component: AdminLoginPage
+        },
+        {
+            path: '/admin/home',
+            component: AdminHomePage,
+            beforeEnter: (to, from, next) => {
+                adminIsNotAuthorizedRedirect(to, from, next)
+            }
+        },
+        {
             path: '/admin/manage-posts',
-            component: AdminManagePostsPage
+            component: AdminManagePostsPage,
+            beforeEnter: (to, from, next) => {
+                adminIsNotAuthorizedRedirect(to, from, next)
+            }
         },
         {
             path: '/admin/manage-users',
-            component: AdminManageUsersPage
+            component: AdminManageUsersPage,
+            beforeEnter: (to, from, next) => {
+                adminIsNotAuthorizedRedirect(to, from, next)
+            }
         },
         {
             path: '/admin/backup',
-            component: AdminBackupPage
+            component: AdminBackupPage,
+            beforeEnter: (to, from, next) => {
+                adminIsNotAuthorizedRedirect(to, from, next)
+            }
         },
         {
             path: "*",
@@ -31,3 +56,13 @@ export default new VueRouter({
         }
     ]
 })
+
+const adminIsNotAuthorizedRedirect = async (to, from, next) => {
+    try{
+        await isAuthenticated()
+        next()
+    }
+    catch{
+        next('/admin/')
+    }
+}
