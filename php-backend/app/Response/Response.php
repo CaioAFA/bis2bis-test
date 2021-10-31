@@ -34,4 +34,9 @@ class Response {
       echo json_encode($data);
     }
   }
+
+  public static function sendErrorResponse($error = null){
+    http_response_code(500);
+    echo json_encode($error);
+  }
 }

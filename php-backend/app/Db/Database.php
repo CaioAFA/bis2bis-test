@@ -4,6 +4,7 @@ namespace App\Db;
 
 use \PDO;
 use \PDOException;
+use \App\Env\Env;
 
 class Database{
 
@@ -11,25 +12,25 @@ class Database{
    * Host de conexão com o banco de dados
    * @var string
    */
-  const HOST = 'localhost';
+  private $HOST = 'localhost';
 
   /**
    * Nome do banco de dados
    * @var string
    */
-  const NAME = 'cb_blog';
+  private $NAME = 'cb_blog';
 
   /**
    * Usuário do banco
    * @var string
    */
-  const USER = 'admin';
+  private $USER = 'admin';
 
   /**
    * Senha de acesso ao banco de dados
    * @var string
    */
-  const PASS = 'admin';
+  private $PASS = 'admin';
 
   /**
    * Nome da tabela a ser manipulada
@@ -49,6 +50,10 @@ class Database{
    */
   public function __construct($table = null){
     $this->table = $table;
+    $this->HOST = \App\Env\Env::$DB_HOST;
+    $this->NAME = \App\Env\Env::$DB_NAME;
+    $this->USER = \App\Env\Env::$DB_USER;
+    $this->PASS = \App\Env\Env::$DB_PASS;
     $this->setConnection();
   }
 
@@ -57,7 +62,7 @@ class Database{
    */
   private function setConnection(){
     try{
-      $this->connection = new PDO('mysql:host='.self::HOST.';dbname='.self::NAME,self::USER,self::PASS);
+      $this->connection = new PDO('mysql:host='.$this->HOST.';dbname='.$this->NAME,$this->USER,$this->PASS);
       $this->connection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
     }catch(PDOException $e){
       die('ERROR: '.$e->getMessage());
