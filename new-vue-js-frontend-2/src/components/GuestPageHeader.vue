@@ -1,6 +1,10 @@
 <template>
-  <v-col cols="12">
+  <v-col cols="11">
     <header>
+      <v-btn @click="goToLoginPage">
+        Login
+      </v-btn>
+
       <h1>CB Blog</h1>
       <h2>"O Blog dos Blogs"</h2>
     </header>
@@ -9,7 +13,11 @@
 
 <script>
 export default {
-  
+  methods: {
+    goToLoginPage(){
+      this.$router.push('/admin')
+    }
+  }  
 }
 </script>
 
@@ -17,6 +25,7 @@ export default {
 header {
   padding: 30px;
   text-align: center;
+  position: relative;
 }
 
 h1 {
@@ -27,5 +36,12 @@ h1 {
 h2 {
   margin-top: 10px;
   font-style: italic;
+}
+
+button {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: rgba(0, 0, 0, 0.03)!important;
 }
 </style>

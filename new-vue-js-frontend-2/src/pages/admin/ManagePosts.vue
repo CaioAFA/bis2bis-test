@@ -22,7 +22,7 @@
           <tr v-for="post in posts" :key="post.id">
             <td>{{ post.authorName }}</td>
             <td>{{ post.title }}</td>
-            <td>{{ post.content }}</td>
+            <td>{{ post.content | truncate(50) }}</td>
             <td class="img-preview-wrapper">
               <img class="img-preview" :src="post.image" :alt="post.title">
             </td>
