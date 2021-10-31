@@ -12,7 +12,7 @@ Route::handleRouteMethods(
   [
     'GET' => [
       'controller' => new PostsGet(),
-      'requireAuth' => true
+      'requireAuth' => false
     ],
     'POST' => [
       'controller' => new PostsPost(),

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import PageNotFound from '../components/PageNotFound'
+import GuestHomePage from '../pages/guest/Home'
 import AdminManagePostsPage from '../pages/admin/ManagePosts'
 import AdminManageUsersPage from '../pages/admin/ManageUsers'
 import AdminBackupPage from '../pages/admin/Backup'
@@ -17,6 +18,11 @@ export default new VueRouter({
     linkExactActiveClass: 'link-active',
 
     routes: [
+        {
+            path: '/home',
+            alias: '/',
+            component: GuestHomePage
+        },
         {
             path: '/admin/login',
             alias: '/admin',
