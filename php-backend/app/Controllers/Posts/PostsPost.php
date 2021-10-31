@@ -10,6 +10,10 @@ use App\Session\Session;
 
 class PostsPost {
   public function execute(){
+    if(!Session::canManagePosts()){
+      Response::sendUnhauthorizedResponse();
+    }
+
     $data = Request::getPayload();
 
     $session = Session::getAdminSession();

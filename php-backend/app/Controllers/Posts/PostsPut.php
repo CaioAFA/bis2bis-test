@@ -9,6 +9,10 @@ use App\Session\Session;
 
 class PostsPut {
   public function execute(){
+    if(!Session::canManagePosts()){
+      Response::sendUnhauthorizedResponse();
+    }
+
     $data = Request::getPayload();
 
     $post = PostRepository::getPost($data['id']);

@@ -6,9 +6,14 @@ use App\Models\AdminModel;
 use App\Repository\AdminRepository;
 use App\Request\Request;
 use App\Response\Response;
+use App\Session\Session;
 
 class AdminPost {
   public function execute(){
+    if(!Session::canManageUsers()){
+      Response::sendUnhauthorizedResponse();
+    }
+
     $data = Request::getPayload();
 
     $newAdmin = new AdminModel();

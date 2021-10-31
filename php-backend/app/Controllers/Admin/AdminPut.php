@@ -5,9 +5,14 @@ namespace App\Controllers\Admin;
 use App\Repository\AdminRepository;
 use App\Request\Request;
 use App\Response\Response;
+use App\Session\Session;
 
 class AdminPut {
   public function execute(){
+    if(!Session::canManageUsers()){
+      Response::sendUnhauthorizedResponse();
+    }
+
     $data = Request::getPayload();
 
     $admin = AdminRepository::getAdmin($data['id']);

@@ -3,9 +3,14 @@
 namespace App\Controllers\Dumps;
 
 use App\Response\Response;
+use App\Session\Session;
 
 class DumpsPost {
   public function execute(){
+    if(!Session::canManageDumps()){
+      Response::sendUnhauthorizedResponse();
+    }
+    
     $dumpsDir = __DIR__ . '/../../../dumps';
     
     $HOST = \App\Env\Env::$DB_HOST;

@@ -34,6 +34,18 @@ class Session {
     );
     session_start();
   }
+
+  public static function canManagePosts(){
+    return $_SESSION['admin']['permissions']['canManagePosts'];
+  }
+
+  public static function canManageUsers(){
+    return $_SESSION['admin']['permissions']['canManageUsers'];
+  }
+
+  public static function canManageDumps(){
+    return $_SESSION['admin']['permissions']['canManageDumps'];
+  }
 }
 // echo print_r($_SESSION, true);
 

@@ -3,9 +3,14 @@
 namespace App\Controllers\DumpsDownload;
 
 use App\Response\Response;
+use App\Session\Session;
 
 class DumpsDownloadGet {
   public function execute(){
+    if(!Session::canManageDumps()){
+      Response::sendUnhauthorizedResponse();
+    }
+    
     $dumpsDir = __DIR__ . '/../../../dumps';
 
     $filename = $_REQUEST["filename"];
