@@ -13,6 +13,10 @@ class Route {
 
     $controller = null;
 
+    if($method == 'OPTIONS'){
+      Response::sendOkResponse();
+    }
+
     $r = $routes[$method];
     if(isset($r)){
       $controller = $r['controller'];
