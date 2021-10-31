@@ -12,6 +12,10 @@ class DumpsDownloadGet {
     $filePath = "$dumpsDir/$filename";
     $fileSize = filesize($filePath);
 
+    if(!file_exists($filePath)){
+      Response::sendNotFoundResponse();
+    }
+
     header('Cache-control: private');
     header('Content-Type: application/octet-stream');
     header('Content-Length: '.$fileSize);
