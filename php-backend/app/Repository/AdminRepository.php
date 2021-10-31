@@ -49,8 +49,8 @@ class AdminRepository {
     ]);
   }
 
-  public static function getAdminByEmailAndPassword($email, $password){
-    $where = 'email = "' . $email . '" AND password = "' . $password . '"';
+  public static function getAdminByEmail($email){
+    $where = "email = '$email'";
     return (new Database('admin'))->select($where)
                                     ->fetchObject(\App\Models\AdminModel::class);
   }

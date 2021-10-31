@@ -10,9 +10,11 @@ use App\Session\Session;
 class AuthorizationPost {
   public function execute(){
     $data = Request::getPayload();
-    $admin = AdminRepository::getAdminByEmailAndPassword($data['email'], $data['password']);
-    
+    $admin = AdminRepository::getAdminByEmail($data['email']);
+
     if(!$admin) Response::sendUnhauthorizedResponse();
+
+    if(!password_verify($data['password'], $admin->getPassword())) Response::sendUnhauthorizedResponse();
 
     Session::createAdminSession($admin);
 

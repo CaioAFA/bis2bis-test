@@ -41,7 +41,7 @@ class AdminModel {
 	}
 
 	public function setPassword($password){
-		$this->password = $password;
+		$this->password = password_hash($password, PASSWORD_DEFAULT);
 	}
 
 	public function getCanManagePosts(){
