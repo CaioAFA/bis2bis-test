@@ -78,4 +78,28 @@ class AdminModel {
 			'canManageDumps' => $this->getCanManageDumps() ? true : false
 		];
 	}
+
+	public function validate($isEditing = false){
+		if($isEditing && !$this->getId()){
+			return "ID não pode ser vazio";
+		}
+
+		if(!strlen($this->getName())){
+			return "Nome não pode ser vazio";
+		}
+		
+		if(!strlen($this->getEmail())){
+			return "E-mail não pode ser vazio";
+		}
+
+		if(!$isEditing && !strlen($this->getPassword())){
+			return "Senha não pode ser vazia";
+		}
+
+		if(!$this->getCanManagePosts() && !$this->getCanManageUsers() && !$this->getCanManageDumps()){
+			return "Administrador deve ter ao menos uma permissão";
+		}
+
+		return null;
+	}
 }

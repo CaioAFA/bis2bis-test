@@ -15,6 +15,10 @@ class AdminPut {
 
     $data = Request::getPayload();
 
+    if(!isset($data['id'])){
+      Response::sendErrorResponse("Informe um ID");
+    }
+
     $admin = AdminRepository::getAdmin($data['id']);
 
     if(!$admin){
@@ -23,10 +27,19 @@ class AdminPut {
 
     $admin->setName($data['name']);
     $admin->setEmail($data['email']);
-    $admin->setPassword($data['password']);
+
+    if($data['password']){
+      $admin->setPassword($data['password']);
+    }
+
     $admin->setCanManagePosts($data['canManagePosts']);
     $admin->setCanManageUsers($data['canManageUsers']);
     $admin->setCanManageDumps($data['canManageDumps']);
+
+    $error = $admin->validate(true);
+    if($error){
+      Response::sendErrorResponse($error);
+    }
 
     AdminRepository::updateAdmin($admin);
     

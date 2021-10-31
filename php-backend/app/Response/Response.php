@@ -33,10 +33,12 @@ class Response {
       http_response_code(200);
       echo json_encode($data);
     }
+    die();
   }
 
   public static function sendErrorResponse($error = null){
     http_response_code(500);
-    echo json_encode($error);
+    echo $error;
+    die();
   }
 }

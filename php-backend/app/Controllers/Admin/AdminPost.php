@@ -25,6 +25,11 @@ class AdminPost {
     $newAdmin->setCanManageUsers($data['canManageUsers']);
     $newAdmin->setCanManageDumps($data['canManageDumps']);
     
+    $error = $newAdmin->validate(false);
+    if($error){
+      Response::sendErrorResponse($error);
+    }
+
     AdminRepository::insertAdmin($newAdmin);
 
     Response::sendJsonResponse();
