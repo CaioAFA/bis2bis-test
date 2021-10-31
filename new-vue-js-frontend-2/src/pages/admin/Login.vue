@@ -64,7 +64,7 @@ export default {
   methods: {
     async tryToLogin(){
       try{
-        const sessionData = await authenticate(this.email, this.password)
+        await authenticate(this.email, this.password)
         this.$router.push('/admin/home')
       }
       catch(error){
