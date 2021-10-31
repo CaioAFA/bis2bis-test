@@ -26,7 +26,7 @@ class Session {
   public static function initSession(){
     header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
     session_set_cookie_params(
-      3600,
+      0,
       '/',
       '.teste-bis2bis.com.br',
       false,

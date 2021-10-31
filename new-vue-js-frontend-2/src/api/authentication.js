@@ -37,7 +37,7 @@ export const authenticate = (email, password) => {
       if (this.readyState === XMLHttpRequest.DONE) {
         if (this.status === 200) {
           const sessionId = this.responseText.replaceAll('"', '')
-          document.cookie = `PHPSESSID=${sessionId}; expires=Sun, 31-Oct-2021 05:20:31 GMT; Max-Age=3600; path=/; domain=.teste-bis2bis.com.br;`
+          document.cookie = `PHPSESSID=${sessionId}; expires=0; path=/; domain=.teste-bis2bis.com.br;`
           resolve()
         } else {
           reject()
