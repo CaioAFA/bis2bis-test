@@ -9,9 +9,9 @@ class Session {
     $_SESSION['admin']['id'] = $admin->getId();
 
     $_SESSION['admin']['permissions'] = [
-      'canManageUsers' => $admin->getCanManageUsers(),
-      'canManagePosts' => $admin->getCanManagePosts(),
-      'canManageDumps' => $admin->getCanManageDumps(),
+      'canManageUsers' => $admin->getCanManageUsers() ? true : false,
+      'canManagePosts' => $admin->getCanManagePosts() ? true : false,
+      'canManageDumps' => $admin->getCanManageDumps() ? true : false,
     ];
   }
 

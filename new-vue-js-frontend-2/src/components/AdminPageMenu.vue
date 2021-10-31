@@ -5,15 +5,15 @@
     </h1>
 
     <ul>
-      <li>
+      <li v-if="this.session.permissions.canManagePosts">
         <router-link to="/admin/manage-posts">Gerenciar Posts</router-link>
       </li>
 
-      <li>
+      <li v-if="this.session.permissions.canManageUsers">
         <router-link to="/admin/manage-users">Gerenciar Usuários</router-link>
       </li>
 
-      <li>
+      <li v-if="this.session.permissions.canManageDumps">
         <router-link to="/admin/backup">Backup</router-link>
       </li>
 
@@ -27,13 +27,20 @@
 
 <script>
 import { logout } from '../api/authentication'
+import { mapState } from 'vuex'
 
 export default {
+  computed: {
+    ...mapState('adminModule', ['session'])
+  },
   methods: {
     logoutHandler(){
       logout()
       window.location.reload()
     }
+  },
+  mounted(){
+    console.log(this.session)
   }
 }
 </script>

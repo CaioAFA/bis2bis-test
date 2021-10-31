@@ -41,6 +41,7 @@
 
 <script>
 import { isAuthenticated, authenticate } from '../../api/authentication'
+import { mapMutations } from 'vuex'
 
 export default {
   data(){
@@ -63,14 +64,17 @@ export default {
   methods: {
     async tryToLogin(){
       try{
-        await authenticate(this.email, this.password)
+        const sessionData = await authenticate(this.email, this.password)
+        this.setAdminSessionData(sessionData)
         this.$router.push('/admin/home')
       }
       catch(error){
         alert('Falha ao logar! Verifique seu usuário e senha.')
         console.log('Failed to login')
       }
-    }
+    },
+
+    ...mapMutations('adminModule', ['setAdminSessionData'])
   }
 }
 </script>

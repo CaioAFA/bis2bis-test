@@ -16,6 +16,13 @@ class AuthorizationPost {
 
     Session::createAdminSession($admin);
 
-    Response::sendJsonResponse(session_id());
+    $sessionData = Session::getAdminSession();
+
+    Response::sendJsonResponse(
+      [
+        'sessionId' => session_id(),
+        'sessionData' => $sessionData
+      ]
+    );
   }
 }

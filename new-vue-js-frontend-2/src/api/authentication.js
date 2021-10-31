@@ -1,5 +1,11 @@
+import store from '../store/store'
+
 export const isAuthenticated = () => {
   return new Promise((resolve, reject) => {
+    console.log(store.state.adminModule.session.isLoggedIn)
+    if(store.state.adminModule.session.isLoggedIn)
+      return resolve()
+
     var xhr = new XMLHttpRequest();
 
     var url = `${process.env.VUE_APP_API_HOST}/Authorization.php`;
@@ -11,6 +17,12 @@ export const isAuthenticated = () => {
     xhr.onreadystatechange = function () {
       if (this.readyState === XMLHttpRequest.DONE) {
         if (this.status === 200) {
+          const sessionData = JSON.parse(this.responseText)
+
+          if(!store.state.adminModule.session.isLoggedIn){
+            store.commit('adminModule/setAdminSessionData', sessionData)
+          }
+
           resolve()
         } else {
           document.cookie = ''
@@ -36,9 +48,15 @@ export const authenticate = (email, password) => {
     xhr.onreadystatechange = function () {
       if (this.readyState === XMLHttpRequest.DONE) {
         if (this.status === 200) {
-          const sessionId = this.responseText.replaceAll('"', '')
+          const response = JSON.parse(this.responseText)
+          const sessionId = response['sessionId']
           document.cookie = `PHPSESSID=${sessionId}; expires=0; path=/; domain=.teste-bis2bis.com.br;`
-          resolve()
+
+          if(!store.state.adminModule.session.isLoggedIn){
+            store.commit('adminModule/setAdminSessionData', response.sessionData)
+          }
+
+          resolve(response.sessionData)
         } else {
           reject()
         }
