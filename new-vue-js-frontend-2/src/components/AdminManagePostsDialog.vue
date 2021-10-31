@@ -69,7 +69,13 @@
             Fechar
           </v-btn>
 
-          <v-btn color="blue darken-1" text @click="savePost">
+          <v-btn
+            color="blue darken-1"
+            text @click="savePost"
+            :disabled="
+              !(isTitleValid && isContentValid)
+            "
+          >
             Salvar
           </v-btn>
         </v-card-actions>
@@ -95,6 +101,12 @@ export default {
     };
   },
   computed: {
+    isTitleValid(){
+      return this.post.title.length ? true : false
+    },
+    isContentValid(){
+      return this.post.content.length ? true : false
+    },
     imageHasValidUrl(){
       let url;
       

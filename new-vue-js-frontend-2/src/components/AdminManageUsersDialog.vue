@@ -43,7 +43,7 @@
             </v-col>
 
             <v-col cols="12">
-              <b>Permissões para gerenciar:</b>
+              <b>Permissões para gerenciar (necessário ao menos uma):</b>
 
               <v-row>
                 <v-col cols="4">
@@ -78,7 +78,12 @@
           Fechar
         </v-btn>
 
-        <v-btn color="blue darken-1" text @click="saveAdmin">
+        <v-btn
+          color="blue darken-1"
+          text
+          @click="saveAdmin"
+          :disabled="!(isNameValid && isEmailValid && isPermissionsValid && isPasswordValid)"
+        >
           Salvar
         </v-btn>
       </v-card-actions>
@@ -107,6 +112,24 @@ export default {
     inputAdmin: {
       required: false,
     },
+  },
+  computed: {
+    isNameValid(){
+      return this.admin.name.length ? true : false
+    },
+    isEmailValid(){
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(this.admin.email).toLowerCase());
+    },
+    isPermissionsValid(){
+      return this.admin.canManagePosts || this.admin.canManageUsers || this.admin.canManageDumps
+    },
+    isPasswordValid(){
+      if(this.isEditing)
+        return true
+
+      return this.admin.password.length ? true : false
+    }
   },
   methods: {
     saveAdmin(){

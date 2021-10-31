@@ -2,7 +2,6 @@ import store from '../store/store'
 
 export const isAuthenticated = () => {
   return new Promise((resolve, reject) => {
-    console.log(store.state.adminModule.session.isLoggedIn)
     if(store.state.adminModule.session.isLoggedIn)
       return resolve()
 

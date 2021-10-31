@@ -39,9 +39,6 @@ export default {
       window.location.reload()
     }
   },
-  mounted(){
-    console.log(this.session)
-  }
 }
 </script>
 

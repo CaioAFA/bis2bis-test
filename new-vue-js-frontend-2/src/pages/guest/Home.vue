@@ -26,7 +26,6 @@ export default {
   mounted(){
     getPosts().then((posts) => {
       this.posts = posts
-      console.log(posts)
     })
   }
 }
