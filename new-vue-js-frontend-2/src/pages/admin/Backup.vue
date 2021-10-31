@@ -1,5 +1,11 @@
 <template>
   <AdminPageWrapper title="Backup">
+    <v-row>
+        <v-spacer></v-spacer>
+        <v-btn id="create-dump-button" @click="handleCreateDump">
+            Criar Dump
+        </v-btn>
+    </v-row>
     <v-simple-table id="manage-dumps-table">
       <template v-slot:default>
         <thead>
@@ -27,7 +33,7 @@
 <script>
 import AdminPageWrapper from "../../components/AdminPageWrapper";
 
-import { getDumps, downloadDump, deleteDump } from "../../api/backup";
+import { getDumps, downloadDump, deleteDump, createDump } from "../../api/backup";
 
 export default {
   components: {
@@ -40,7 +46,7 @@ export default {
   },
   mounted() {
     getDumps().then((dumps) => {
-      this.dumps = dumps;
+      this.dumps = dumps.reverse();
     });
   },
   methods: {
@@ -55,11 +61,26 @@ export default {
             alert('Algo deu errado com sua requisição.')
         })
     },
+    handleCreateDump(){
+        createDump().then(() => {
+            window.location.reload()
+        }).catch((error) => {
+            console.log(error)
+            alert('Algo deu errado com sua requisição.')
+        })
+    }
   },
 };
 </script>
 
 <style scoped>
+#create-dump-button{
+  margin: 25px 15px 15px 0;
+  background-color: rgb(0 70 58);
+  color: white !important;
+  font-weight: bolder;
+}
+
 #manage-dumps-table {
   max-width: 350px;
 }

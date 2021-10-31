@@ -48,6 +48,30 @@ export const deleteDump = (filename) => {
   })
 }
 
+export const createDump = () => {
+  return new Promise((resolve, reject) => {
+    var xhr = new XMLHttpRequest();
+
+    var url = `${process.env.VUE_APP_API_HOST}/Dumps.php`;
+
+    xhr.open("POST", url, false);
+
+    xhr.withCredentials = true
+
+    xhr.onreadystatechange = function () {
+      if (this.readyState === XMLHttpRequest.DONE) {
+        if (this.status === 200) {
+          resolve()
+        } else {
+          reject()
+        }
+      }
+    };
+
+    xhr.send();
+  })
+}
+
 export const downloadDump = (filename) => {
   const url = `${process.env.VUE_APP_API_HOST}/DumpsDownload.php?filename=${filename}`
   window.open(url, '_blank')
