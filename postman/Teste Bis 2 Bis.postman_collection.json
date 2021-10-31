@@ -1,0 +1,282 @@
+{
+	"info": {
+		"_postman_id": "5a670634-0ddc-484b-b8e6-1b17fdfac0d0",
+		"name": "Teste Bis 2 Bis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://teste-bis2bis.com.br/Post.php",
+							"protocol": "http",
+							"host": [
+								"teste-bis2bis",
+								"com",
+								"br"
+							],
+							"path": [
+								"Post.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Titulo da Noticia\",\n    \"content\": \"Conteudo da noticia\",\n    \"image\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://teste-bis2bis.com.br/Post.php",
+							"protocol": "http",
+							"host": [
+								"teste-bis2bis",
+								"com",
+								"br"
+							],
+							"path": [
+								"Post.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Post",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 8,\n    \"title\": \"Titulo da Noticia Atualizado\",\n    \"content\": \"Conteudo da noticia Atualizado\",\n    \"image\": \"https://s1.static.brasilescola.uol.com.br/be/conteudo/images/arara-azul.jpg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://teste-bis2bis.com.br/Post.php",
+							"protocol": "http",
+							"host": [
+								"teste-bis2bis",
+								"com",
+								"br"
+							],
+							"path": [
+								"Post.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Post",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 8\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://teste-bis2bis.com.br/Post.php",
+							"protocol": "http",
+							"host": [
+								"teste-bis2bis",
+								"com",
+								"br"
+							],
+							"path": [
+								"Post.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Delete Admin",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://teste-bis2bis.com.br/Admin.php",
+							"protocol": "http",
+							"host": [
+								"teste-bis2bis",
+								"com",
+								"br"
+							],
+							"path": [
+								"Admin.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Caio Arrabal 2\",\n    \"email\": \"caio.a.1998@gmail.com.br\",\n    \"password\": \"123456\",\n    \"canManagePosts\": true,\n    \"canManageUsers\": true,\n    \"canManageDumps\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://teste-bis2bis.com.br/Admin.php",
+							"protocol": "http",
+							"host": [
+								"teste-bis2bis",
+								"com",
+								"br"
+							],
+							"path": [
+								"Admin.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Admin",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 800,\n    \"name\": \"Caio Arrabal 2\",\n    \"email\": \"caio.a.1998@gmail.com.br\",\n    \"password\": \"123456\",\n    \"canManagePosts\": true,\n    \"canManageUsers\": true,\n    \"canManageDumps\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://teste-bis2bis.com.br/Admin.php",
+							"protocol": "http",
+							"host": [
+								"teste-bis2bis",
+								"com",
+								"br"
+							],
+							"path": [
+								"Admin.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Admins",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://teste-bis2bis.com.br/Admin.php",
+							"protocol": "http",
+							"host": [
+								"teste-bis2bis",
+								"com",
+								"br"
+							],
+							"path": [
+								"Admin.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"caio.arrabal@gmail.com\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://teste-bis2bis.com.br/Authorization.php",
+					"protocol": "http",
+					"host": [
+						"teste-bis2bis",
+						"com",
+						"br"
+					],
+					"path": [
+						"Authorization.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Is Authorized",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://teste-bis2bis.com.br/Authorization.php",
+					"protocol": "http",
+					"host": [
+						"teste-bis2bis",
+						"com",
+						"br"
+					],
+					"path": [
+						"Authorization.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

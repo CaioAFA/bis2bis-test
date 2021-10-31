@@ -6,9 +6,7 @@ use App\Response\Response;
 use App\Session\Session;
 
 class AuthorizationGet {
-  public function execute(){
-    Session::initSession();
-    
+  public function execute(){    
     $sessionData = Session::getAdminSession();
 
     if(!$sessionData) Response::sendUnhauthorizedResponse();

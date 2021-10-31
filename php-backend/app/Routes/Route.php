@@ -7,6 +7,8 @@ use App\Session\Session;
 
 class Route {
   public static function handleRouteMethods($routes){
+    Session::initSession();
+
     $method = $_SERVER['REQUEST_METHOD'];
 
     $controller = null;
@@ -20,7 +22,8 @@ class Route {
       Response::sendMethodNotAllowedResponse();
     }
 
-    if($r['requireAuth'] && Session::getAdminSession()){
+    $adminSession = Session::getAdminSession();
+    if($r['requireAuth'] && !$adminSession){
       Response::sendUnhauthorizedResponse();
     }
 

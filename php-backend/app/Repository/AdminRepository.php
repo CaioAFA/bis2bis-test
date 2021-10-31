@@ -34,7 +34,7 @@ class AdminRepository {
                                   ->fetchObject(\App\Models\AdminModel::class);
   }
 
-  public function deleteAdmin($id){
+  public static function deleteAdmin($id){
     return (new Database('admin'))->delete('id = ' . $id);
   }
 

@@ -64,8 +64,6 @@ $adminRep = new AdminRepository;
 // $postRep->deletePost(4);
 
 // Update
-// $obPost->setId(7);
-// $obPost->setAdminId('1');
 // $obPost->setTitle('Algum Titulo5');
 // $obPost->setContent('Algum conteúd5');
 // $obPost->setImage('alguma-image5');

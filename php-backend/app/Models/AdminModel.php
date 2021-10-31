@@ -67,4 +67,16 @@ class AdminModel {
 	public function setCanManageDumps($can_manage_dumps){
 		$this->can_manage_dumps = $can_manage_dumps;
 	}
+
+	public function toArray(){
+		return [
+			'id' => $this->getId(),
+			'name' => $this->getName(),
+			'email' => $this->getEmail(),
+			'password' => $this->getPassword(),
+			'canManagePosts' => $this->getCanManagePosts(),
+			'canManageUsers' => $this->getCanManageUsers(),
+			'canManageDumps' => $this->getCanManageDumps()
+		];
+	}
 }

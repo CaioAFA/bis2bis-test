@@ -11,8 +11,6 @@ class AuthorizationPost {
   public function execute(){
     $data = Request::getPayload();
     $admin = AdminRepository::getAdminByEmailAndPassword($data['email'], $data['password']);
-
-    Session::initSession();
     
     if(!$admin) Response::sendUnhauthorizedResponse();
 
