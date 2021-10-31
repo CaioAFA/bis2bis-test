@@ -14,7 +14,19 @@ class AdminDelete {
     }
 
     $data = Request::getPayload();
+
+    if(!$data['id']){
+      Response::sendErrorResponse("Envie o ID de algum administrador");
+    }
+
     $adminToDelete = $data['id'];
+
+    $sessionData = Session::getAdminSession();
+    $loggedAdminId = $sessionData["id"];
+    if($data['id'] == $loggedAdminId){
+      Response::sendErrorResponse("Você não pode deletar a si mesmo");
+    }
+
     AdminRepository::deleteAdmin($adminToDelete);
     Response::sendJsonResponse();
   }

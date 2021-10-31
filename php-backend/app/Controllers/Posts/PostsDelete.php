@@ -14,6 +14,11 @@ class PostsDelete {
     }
     
     $data = Request::getPayload();
+
+    if(!$data['id']){
+      Response::sendErrorResponse("Envie o ID de algum post");
+    }
+
     $postToDelete = $data['id'];
     PostRepository::deletePost($postToDelete);
     Response::sendJsonResponse();
