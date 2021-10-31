@@ -1,2 +1,4 @@
 .vscode/
 new-vue-js-frontend-2/.env
+php-backend/dumps/*
+!php-backend/dumps/.gitkeep
