@@ -15,6 +15,7 @@ class PostModel {
   private $image;
   private $created_at;
   private $edited_at;
+	private $author_name;
 
   public function getId(){
 		return $this->id;
@@ -72,6 +73,14 @@ class PostModel {
 		$this->edited_at = $edited_at;
 	}
 
+	public function getAuthorName(){
+		return $this->author_name;
+	}
+
+	public function setAuthorName($author_name){
+		$this->author_name = $author_name;
+	}
+
 	public function toArray(){
 		return [
 			'id' => $this->getId(),
@@ -81,6 +90,7 @@ class PostModel {
 			'image' => $this->getImage(),
 			'createdAt' => $this->getCreatedAt(),
 			'editedAt' => $this->getEditedAt(),
+			'authorName' => $this->getAuthorName()
 		];
 	}
 }

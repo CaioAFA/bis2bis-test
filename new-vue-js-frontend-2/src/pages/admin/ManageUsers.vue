@@ -1,5 +1,10 @@
 <template>
   <AdminPageWrapper title="Gerenciar Usuários">
+    <v-row>
+      <v-spacer></v-spacer>
+      <AdminManageUsersDialog />
+    </v-row>
+
     <v-simple-table id="manage-users-table">
       <template v-slot:default>
         <thead>
@@ -14,84 +19,76 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="user in users" :key="user.name">
-            <td>{{ user.name }}</td>
-            <td>{{ user.email }}</td>
+          <tr v-for="admin in admins" :key="admin.id">
+            <td>{{ admin.name }}</td>
+            <td>{{ admin.email }}</td>
             <td></td>
             <td>
-              <v-checkbox
-                v-model="user.can_manage_posts"
-                disabled
-              />
+              <v-checkbox v-model="admin.canManagePosts" disabled />
             </td>
 
             <td>
-              <v-checkbox
-                v-model="user.can_manage_users"
-                disabled
-              />
+              <v-checkbox v-model="admin.canManageUsers" disabled />
             </td>
 
             <td>
-              <v-checkbox
-                v-model="user.can_manage_dumps"
-                disabled
-              />
+              <v-checkbox v-model="admin.canManageDumps" disabled />
             </td>
 
             <td class="text-center">
-              <AdminManageUsersDialog
-                :inputUser="user"
-              />
+              <AdminManageUsersDialog :inputAdmin="admin" />
 
-              <AdminManagerUsersDeleteDialog
-                :user="user"
-              />
+              <AdminManagerUsersDeleteDialog :admin="admin" />
             </td>
           </tr>
         </tbody>
       </template>
     </v-simple-table>
-
   </AdminPageWrapper>
 </template>
 
 <script>
 import AdminPageWrapper from "../../components/AdminPageWrapper";
 import AdminManageUsersDialog from "../../components/AdminManageUsersDialog.vue";
-import AdminManagerUsersDeleteDialog from '../../components/AdminManagerUsersDeleteDialog.vue'
+import AdminManagerUsersDeleteDialog from "../../components/AdminManagerUsersDeleteDialog.vue";
+
+import { getAdmins } from '../../api/admin'
 
 export default {
-    components: {
-        AdminPageWrapper,
-        AdminManageUsersDialog,
-        AdminManagerUsersDeleteDialog
-    },
-    data() {
-        return {
-            users: [
-                {
-                    email: "caio.a.1998@gmail.com",
-                    name: "Caio Arrabal",
-                    can_manage_posts: true,
-                    can_manage_users: false,
-                    can_manage_dumps: true,
-                },
-                {
-                    email: "joao.a.1998@gmail.com",
-                    name: "João Arrabal",
-                    can_manage_posts: false,
-                    can_manage_users: false,
-                    can_manage_dumps: true,
-                },
-            ],
-        };
-    },
+  components: {
+    AdminPageWrapper,
+    AdminManageUsersDialog,
+    AdminManagerUsersDeleteDialog,
+  },
+  data() {
+    return {
+      admins: [
+        {
+          email: "caio.a.1998@gmail.com",
+          name: "Caio Arrabal",
+          can_manage_posts: true,
+          can_manage_users: false,
+          can_manage_dumps: true,
+        },
+        {
+          email: "joao.a.1998@gmail.com",
+          name: "João Arrabal",
+          can_manage_posts: false,
+          can_manage_users: false,
+          can_manage_dumps: true,
+        },
+      ],
+    };
+  },
+  mounted() {
+    getAdmins().then((admins) => {
+      this.admins = admins;
+    });
+  },
 };
 </script>
 
 <style scoped>
-
 </style>
 
 <style>

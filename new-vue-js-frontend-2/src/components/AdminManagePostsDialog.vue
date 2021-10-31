@@ -20,8 +20,8 @@
         <v-card-text>
           <v-container>
             <v-row>
-              <v-col cols="12">
-                <b>Autor: {{ post.author_name }}</b>
+              <v-col v-if="isEditing" cols="12">
+                <b>Autor: {{ post.authorName }}</b>
                 <br>
                 <br>
               </v-col>
@@ -56,7 +56,7 @@
                   <v-spacer></v-spacer>
 
                   <v-col cols="2">
-                    <img class="img-preview" :src="[post.image ? post.image : 'https://thumbs.dreamstime.com/b/no-image-available-icon-vector-illustration-flat-design-140633878.jpg']" :alt="post.name">
+                    <img class="img-preview" :src="[imageHasValidUrl ? post.image : 'https://thumbs.dreamstime.com/b/no-image-available-icon-vector-illustration-flat-design-140633878.jpg']" :alt="post.title">
                   </v-col>
                 </v-row>
               </v-col>
@@ -69,7 +69,7 @@
             Fechar
           </v-btn>
 
-          <v-btn color="blue darken-1" text @click="saveUser">
+          <v-btn color="blue darken-1" text @click="savePost">
             Salvar
           </v-btn>
         </v-card-actions>
@@ -79,19 +79,33 @@
 </template>
 
 <script>
+import { createPost, editPost } from '../api/posts'
+
 export default {
   data() {
     return {
-      post: this.inputPost ?? {
-        author_name: '',
+      post: this.inputPost ? { ...this.inputPost } :  {
+        authorName: '',
         title: '',
         content: '',
-        image: '',
-        name: ''
+        image: ''
       },
       isDialogOpen: false,
       isEditing: this.inputPost != null,
     };
+  },
+  computed: {
+    imageHasValidUrl(){
+      let url;
+      
+      try {
+        url = new URL(this.post.image);
+      } catch (_) {
+        return false;  
+      }
+
+      return url.protocol === "http:" || url.protocol === "https:";
+    }
   },
   props: {
     inputPost: {
@@ -99,8 +113,23 @@ export default {
     },
   },
   methods: {
-    saveUser(){
-      this.isDialogOpen = false
+    savePost(){
+      if(!this.isEditing){
+        createPost(this.post.title, this.post.content, this.post.image).then(() => {
+          window.location.reload()
+        }).catch((error) => {
+          console.log(error)
+          alert('Algo deu errado com sua requisição.')
+        })
+      }
+      else{
+        editPost(this.post.id, this.post.title, this.post.content, this.post.image).then(() => {
+          window.location.reload()
+        }).catch((error) => {
+          console.log(error)
+          alert('Algo deu errado com sua requisição.')
+        })
+      }
     }
   }
 };

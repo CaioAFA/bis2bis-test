@@ -73,10 +73,9 @@ class AdminModel {
 			'id' => $this->getId(),
 			'name' => $this->getName(),
 			'email' => $this->getEmail(),
-			'password' => $this->getPassword(),
-			'canManagePosts' => $this->getCanManagePosts(),
-			'canManageUsers' => $this->getCanManageUsers(),
-			'canManageDumps' => $this->getCanManageDumps()
+			'canManagePosts' => $this->getCanManagePosts() ? true : false,
+			'canManageUsers' => $this->getCanManageUsers() ? true : false,
+			'canManageDumps' => $this->getCanManageDumps() ? true : false
 		];
 	}
 }

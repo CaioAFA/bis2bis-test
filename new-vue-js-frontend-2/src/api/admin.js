@@ -1,8 +1,8 @@
-export const getPosts = () => {
+export const getAdmins = () => {
   return new Promise((resolve, reject) => {
     var xhr = new XMLHttpRequest();
 
-    var url = `${process.env.VUE_APP_API_HOST}/Post.php`;
+    var url = `${process.env.VUE_APP_API_HOST}/Admin.php`;
 
     xhr.open("GET", url, false);
 
@@ -22,17 +22,17 @@ export const getPosts = () => {
   })
 }
 
-export const deletePost = (postId) => {
+export const deleteAdmin = (adminId) => {
   return new Promise((resolve, reject) => {
     var xhr = new XMLHttpRequest();
 
-    var url = `${process.env.VUE_APP_API_HOST}/Post.php`;
+    var url = `${process.env.VUE_APP_API_HOST}/Admin.php`;
 
     xhr.open("DELETE", url, false);
 
     xhr.withCredentials = true
 
-    const payload = { id: postId }
+    const payload = { id: adminId }
 
     xhr.onreadystatechange = function () {
       if (this.readyState === XMLHttpRequest.DONE) {
@@ -48,17 +48,17 @@ export const deletePost = (postId) => {
   })
 }
 
-export const createPost = (title, content, image) => {
+export const createAdmin = (name, email, password, canManagePosts, canManageUsers, canManageDumps) => {
   return new Promise((resolve, reject) => {
     var xhr = new XMLHttpRequest();
 
-    var url = `${process.env.VUE_APP_API_HOST}/Post.php`;
+    var url = `${process.env.VUE_APP_API_HOST}/Admin.php`;
 
     xhr.open("POST", url, false);
 
     xhr.withCredentials = true
 
-    const payload = { title, content, image }
+    const payload = { name, email, password, canManagePosts, canManageUsers, canManageDumps }
 
     xhr.onreadystatechange = function () {
       if (this.readyState === XMLHttpRequest.DONE) {
@@ -74,17 +74,17 @@ export const createPost = (title, content, image) => {
   })
 }
 
-export const editPost = (id, title, content, image) => {
+export const editAdmin = (id, name, email, password, canManagePosts, canManageUsers, canManageDumps) => {
   return new Promise((resolve, reject) => {
     var xhr = new XMLHttpRequest();
 
-    var url = `${process.env.VUE_APP_API_HOST}/Post.php`;
+    var url = `${process.env.VUE_APP_API_HOST}/Admin.php`;
 
     xhr.open("PUT", url, false);
 
     xhr.withCredentials = true
 
-    const payload = { id, title, content, image }
+    const payload = { id, name, email, password, canManagePosts, canManageUsers, canManageDumps }
 
     xhr.onreadystatechange = function () {
       if (this.readyState === XMLHttpRequest.DONE) {

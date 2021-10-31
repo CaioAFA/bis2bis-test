@@ -20,10 +20,10 @@
         </thead>
         <tbody v-if="posts.length">
           <tr v-for="post in posts" :key="post.id">
-            <td>{{ post.author_name }}</td>
+            <td>{{ post.authorName }}</td>
             <td>{{ post.title }}</td>
             <td>{{ post.content }}</td>
-            <td>
+            <td class="img-preview-wrapper">
               <img class="img-preview" :src="post.image" :alt="post.title">
             </td>
             <td>{{ post.createdAt }}</td>
@@ -68,6 +68,13 @@ export default {
 </script>
 
 <style scoped>
+.img-preview-wrapper{
+  display: flex;
+  justify-content: center;
+  height: 100px!important;
+  align-items: center;
+}
+
 .img-preview {
   width: 80px;
   height: 80px;

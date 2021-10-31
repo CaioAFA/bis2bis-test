@@ -37,7 +37,7 @@ class PostRepository {
    * @return array
    */
   public static function getPosts($where = null, $order = null, $limit = null){
-    return (new Database('post'))->selectWithInnerJoin('admin', 'id', 'admin_id', $where, $order, $limit, 'first_table.*, second_table.name')
+    return (new Database('post'))->selectWithInnerJoin('admin', 'id', 'admin_id', $where, $order, $limit, 'first_table.*, second_table.name AS author_name')
                                   ->fetchAll(PDO::FETCH_CLASS,\App\Models\PostModel::class);
   }
 
