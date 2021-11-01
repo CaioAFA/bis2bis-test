@@ -5,7 +5,7 @@
         Criar Usuário
       </v-btn>
 
-      <v-icon v-else left v-bind="attrs" v-on="on">mdi-pencil</v-icon>
+      <v-icon v-else v-bind="attrs" v-on="on">mdi-pencil</v-icon>
     </template>
 
     <v-card>
@@ -93,6 +93,8 @@
 
 <script>
 import { createAdmin, editAdmin } from '../api/admin';
+import { mapState } from 'vuex'
+
 export default {
   data() {
     return {
@@ -129,7 +131,8 @@ export default {
         return true
 
       return this.admin.password.length ? true : false
-    }
+    },
+    ...mapState('adminModule', ['session'])
   },
   methods: {
     saveAdmin(){

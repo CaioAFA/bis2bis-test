@@ -70,9 +70,8 @@ export default {
     ...mapState('adminModule', ['session'])
   },
   mounted() {
-    console.log(this.session)
     getAdmins().then((admins) => {
-      this.admins = admins.filter((a) => a.id != this.session.id);
+      this.admins = admins;
     });
   },
 };

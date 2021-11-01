@@ -1,7 +1,7 @@
 <template>
   <v-dialog v-model="dialog" max-width="290">
     <template v-slot:activator="{ on, attrs }">
-      <v-icon right v-bind="attrs" v-on="on">mdi-cancel</v-icon>
+      <v-icon v-if="admin.id != session.id" right v-bind="attrs" v-on="on">mdi-cancel</v-icon>
     </template>
     <v-card>
       <v-card-title class="text-h5"> Deletar {{ admin.name }}? </v-card-title>
@@ -24,6 +24,7 @@
 
 <script>
 import { deleteAdmin } from '../api/admin'
+import { mapState } from 'vuex'
 
 export default {
   data() {
@@ -36,6 +37,9 @@ export default {
       required: true,
     },
   },
+  computed: {
+    ...mapState('adminModule', ['session'])
+  },
   methods: {
     deleteHandler(){
       deleteAdmin(this.admin.id).then(() => {
@@ -45,7 +49,7 @@ export default {
         alert('Houve um erro! Favor tentar novamente.')
       })
     }
-  }
+  },
 };
 </script>
 
