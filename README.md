@@ -1,3 +1,10 @@
+# Teste Bis 2 Bis
+
+## Tecnologias Utilizadas
+- Vue JS (frontend)
+- PHP (backend)
+- Docker (deploy)
+
 # Rodando o projeto
 ```bash
 cd docker
