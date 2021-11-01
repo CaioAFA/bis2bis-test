@@ -29,5 +29,7 @@ RUN docker-php-ext-install gd
 #PDO - CUSTOMIZAR A SEU DISPOR
 RUN docker-php-ext-install pdo_mysql
 
+RUN apt-get install mysql-client
+
 EXPOSE 9000
 CMD ["php-fpm"]
