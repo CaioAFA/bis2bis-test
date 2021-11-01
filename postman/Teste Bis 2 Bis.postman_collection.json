@@ -14,14 +14,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://api.teste-bis2bis.com.br/Post.php",
+							"raw": "http://localhost:81/Post.php",
 							"protocol": "http",
 							"host": [
-								"api",
-								"teste-bis2bis",
-								"com",
-								"br"
+								"localhost"
 							],
+							"port": "81",
 							"path": [
 								"Post.php"
 							]
@@ -44,14 +42,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://api.teste-bis2bis.com.br/Post.php",
+							"raw": "http://localhost:81/Post.php",
 							"protocol": "http",
 							"host": [
-								"api",
-								"teste-bis2bis",
-								"com",
-								"br"
+								"localhost"
 							],
+							"port": "81",
 							"path": [
 								"Post.php"
 							]
@@ -66,7 +62,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": 8,\n    \"title\": \"Titulo da Noticia Atualizado\",\n    \"content\": \"Conteudo da noticia Atualizado\",\n    \"image\": \"https://s1.static.brasilescola.uol.com.br/be/conteudo/images/arara-azul.jpg\"\n}",
+							"raw": "{\n    \"id\": 9,\n    \"title\": \"Titulo da Noticia Atualizado\",\n    \"content\": \"Conteudo da noticia Atualizado\",\n    \"image\": \"https://s1.static.brasilescola.uol.com.br/be/conteudo/images/arara-azul.jpg\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -74,14 +70,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://api.teste-bis2bis.com.br/Post.php",
+							"raw": "http://localhost:81/Post.php",
 							"protocol": "http",
 							"host": [
-								"api",
-								"teste-bis2bis",
-								"com",
-								"br"
+								"localhost"
 							],
+							"port": "81",
 							"path": [
 								"Post.php"
 							]
@@ -104,14 +98,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://api.teste-bis2bis.com.br/Post.php",
+							"raw": "http://localhost:81/Post.php",
 							"protocol": "http",
 							"host": [
-								"api",
-								"teste-bis2bis",
-								"com",
-								"br"
+								"localhost"
 							],
+							"port": "81",
 							"path": [
 								"Post.php"
 							]
@@ -131,7 +123,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": 5\n}",
+							"raw": "{\n    \"id\": 18\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -139,14 +131,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://api.teste-bis2bis.com.br/Admin.php",
+							"raw": "http://localhost:81/Admin.php",
 							"protocol": "http",
 							"host": [
-								"api",
-								"teste-bis2bis",
-								"com",
-								"br"
+								"localhost"
 							],
+							"port": "81",
 							"path": [
 								"Admin.php"
 							]
@@ -161,7 +151,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Caio Arrabal 2\",\n    \"email\": \"caio.a.1998@gmail.com.br\",\n    \"password\": \"123456\",\n    \"canManagePosts\": true,\n    \"canManageUsers\": true,\n    \"canManageDumps\": true\n}",
+							"raw": "{\n    \"name\": \"Caio Arrabal\",\n    \"email\": \"caio.a.1998@gmail.com.br\",\n    \"password\": \"123456\",\n    \"canManagePosts\": true,\n    \"canManageUsers\": true,\n    \"canManageDumps\": true\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -169,14 +159,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://api.teste-bis2bis.com.br/Admin.php",
+							"raw": "http://localhost:81/Admin.php",
 							"protocol": "http",
 							"host": [
-								"api",
-								"teste-bis2bis",
-								"com",
-								"br"
+								"localhost"
 							],
+							"port": "81",
 							"path": [
 								"Admin.php"
 							]
@@ -191,7 +179,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": 800,\n    \"name\": \"Caio Arrabal 2\",\n    \"email\": \"caio.a.1998@gmail.com.br\",\n    \"password\": \"123456\",\n    \"canManagePosts\": true,\n    \"canManageUsers\": true,\n    \"canManageDumps\": true\n}",
+							"raw": "{\n    \"id\": 8,\n    \"name\": \"Caio Arrabal 2\",\n    \"email\": \"caio.a.1998@gmail.com.br\",\n    \"password\": \"\",\n    \"canManagePosts\": true,\n    \"canManageUsers\": true,\n    \"canManageDumps\": true\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -199,14 +187,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://api.teste-bis2bis.com.br/Admin.php",
+							"raw": "http://localhost:81/Admin.php",
 							"protocol": "http",
 							"host": [
-								"api",
-								"teste-bis2bis",
-								"com",
-								"br"
+								"localhost"
 							],
+							"port": "81",
 							"path": [
 								"Admin.php"
 							]
@@ -220,14 +206,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://api.teste-bis2bis.com.br/Admin.php",
+							"raw": "http://localhost:81/Admin.php",
 							"protocol": "http",
 							"host": [
-								"api",
-								"teste-bis2bis",
-								"com",
-								"br"
+								"localhost"
 							],
+							"port": "81",
 							"path": [
 								"Admin.php"
 							]
@@ -246,14 +230,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://api.teste-bis2bis.com.br/Dumps.php",
+							"raw": "http://localhost:81/Dumps.php",
 							"protocol": "http",
 							"host": [
-								"api",
-								"teste-bis2bis",
-								"com",
-								"br"
+								"localhost"
 							],
+							"port": "81",
 							"path": [
 								"Dumps.php"
 							]
@@ -267,14 +249,12 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://api.teste-bis2bis.com.br/Dumps.php",
+							"raw": "http://localhost:81/Dumps.php",
 							"protocol": "http",
 							"host": [
-								"api",
-								"teste-bis2bis",
-								"com",
-								"br"
+								"localhost"
 							],
+							"port": "81",
 							"path": [
 								"Dumps.php"
 							]
@@ -297,14 +277,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://api.teste-bis2bis.com.br/Dumps.php",
+							"raw": "http://localhost:81/Dumps.php",
 							"protocol": "http",
 							"host": [
-								"api",
-								"teste-bis2bis",
-								"com",
-								"br"
+								"localhost"
 							],
+							"port": "81",
 							"path": [
 								"Dumps.php"
 							]
@@ -318,14 +296,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://api.teste-bis2bis.com.br/DumpsDownload.php?filename=2021-10-31_11:52:12.sql",
+							"raw": "http://localhost:81/DumpsDownload.php?filename=2021-10-31_11:52:12.sql",
 							"protocol": "http",
 							"host": [
-								"api",
-								"teste-bis2bis",
-								"com",
-								"br"
+								"localhost"
 							],
+							"port": "81",
 							"path": [
 								"DumpsDownload.php"
 							],
@@ -348,7 +324,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\": \"caio.arrabal@gmail.com\",\n    \"password\": \"123456\"\n}",
+					"raw": "{\n    \"email\": \"caio.a.1998@gmail.com.br\",\n    \"password\": \"123456\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -356,14 +332,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://api.teste-bis2bis.com.br/Authorization.php",
+					"raw": "http://localhost:81/Authorization.php",
 					"protocol": "http",
 					"host": [
-						"api",
-						"teste-bis2bis",
-						"com",
-						"br"
+						"localhost"
 					],
+					"port": "81",
 					"path": [
 						"Authorization.php"
 					]
@@ -377,14 +351,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://api.teste-bis2bis.com.br/Authorization.php",
+					"raw": "http://localhost:81/Authorization.php",
 					"protocol": "http",
 					"host": [
-						"api",
-						"teste-bis2bis",
-						"com",
-						"br"
+						"localhost"
 					],
+					"port": "81",
 					"path": [
 						"Authorization.php"
 					]
