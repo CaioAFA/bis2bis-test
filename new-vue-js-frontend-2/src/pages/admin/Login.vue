@@ -18,6 +18,7 @@
           <v-text-field
             required
             v-model="password"
+            type="password"
             placeholder="Senha"
           ></v-text-field>
         </v-col>
