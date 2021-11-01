@@ -28,7 +28,7 @@ class Session {
     session_set_cookie_params(
       0,
       '/',
-      '.teste-bis2bis.com.br',
+      '.localhost',
       false,
       false
     );
