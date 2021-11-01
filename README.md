@@ -1,11 +1,14 @@
 # Teste Bis 2 Bis
 
+## Dump do Banco de Dados
+Arquivo ./database/generate-script.sql
+
 ## Tecnologias Utilizadas
 - Vue JS (frontend)
 - PHP (backend)
 - Docker (deploy)
 
-# Rodando o projeto
+## Executando o projeto
 ```bash
 cd docker
 docker-compose up
