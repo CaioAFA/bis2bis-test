@@ -34,23 +34,6 @@ services:
     networks:
       - my-container-network
 
-  # nginx:
-  #   build: Nginx
-  #   # restart: always
-  #   volumes:
-  #     - ./Nginx/nginx.conf:/etc/nginx/nginx.conf
-  #     - ./Nginx/app.vhost:/etc/nginx/conf.d/app.vhost
-  #     - ./Logs/Nginx:/var/log/nginx
-  #     - ../php-backend:/var/www/html
-  #   ports:
-  #     - "80:80"
-  #     - "81:81"
-  #     - "443:443"
-  #   links:
-  #     - fpm
-  #   networks:
-  #     - my-container-network
-
   mysql:
     container_name: mysql_container
     image: mysql:5.7
@@ -71,8 +54,9 @@ services:
     build: VueApp
     volumes:
       - ../new-vue-js-frontend-2:/app
+      - ./VueApp/entrypoint.sh:/entrypoint.sh
     working_dir: /app
-    command: ['yarn', 'serve']
+    command: ['sh', '/entrypoint.sh']
     ports:
       - "8080"
     networks:
