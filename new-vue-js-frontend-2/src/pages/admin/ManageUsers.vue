@@ -53,6 +53,7 @@ import AdminManageUsersDialog from "../../components/AdminManageUsersDialog.vue"
 import AdminManagerUsersDeleteDialog from "../../components/AdminManagerUsersDeleteDialog.vue";
 
 import { getAdmins } from '../../api/admin'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -62,27 +63,16 @@ export default {
   },
   data() {
     return {
-      admins: [
-        {
-          email: "caio.a.1998@gmail.com",
-          name: "Caio Arrabal",
-          can_manage_posts: true,
-          can_manage_users: false,
-          can_manage_dumps: true,
-        },
-        {
-          email: "joao.a.1998@gmail.com",
-          name: "João Arrabal",
-          can_manage_posts: false,
-          can_manage_users: false,
-          can_manage_dumps: true,
-        },
-      ],
+      admins: [],
     };
   },
+  computed: {
+    ...mapState('adminModule', ['session'])
+  },
   mounted() {
+    console.log(this.session)
     getAdmins().then((admins) => {
-      this.admins = admins;
+      this.admins = admins.filter((a) => a.id != this.session.id);
     });
   },
 };
