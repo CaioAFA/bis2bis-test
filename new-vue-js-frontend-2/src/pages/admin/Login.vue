@@ -46,8 +46,8 @@ import { mapMutations } from 'vuex'
 export default {
   data(){
     return {
-      email: 'caio.arrabal@gmail.com',
-      password: '123456'
+      email: '',
+      password: ''
     }
   },
 
