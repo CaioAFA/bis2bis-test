@@ -4,48 +4,47 @@ namespace App\Db;
 
 use \PDO;
 use \PDOException;
-use \App\Env\Env;
 
 class Database{
 
   /**
-   * Host de conexão com o banco de dados
+   * Database host
    * @var string
    */
   private $HOST = 'localhost';
 
   /**
-   * Nome do banco de dados
+   * Database name
    * @var string
    */
   private $NAME = 'cb_blog';
 
   /**
-   * Usuário do banco
+   * Database user
    * @var string
    */
   private $USER = 'admin';
 
   /**
-   * Senha de acesso ao banco de dados
+   * Database user password
    * @var string
    */
   private $PASS = 'admin';
 
   /**
-   * Nome da tabela a ser manipulada
+   * Database table name
    * @var string
    */
   private $table;
 
   /**
-   * Instancia de conexão com o banco de dados
+   * Database connection instane
    * @var PDO
    */
   private $connection;
 
   /**
-   * Define a tabela e instancia e conexão
+   * Create the connection instance
    * @param string $table
    */
   public function __construct($table = null){
@@ -58,7 +57,7 @@ class Database{
   }
 
   /**
-   * Método responsável por criar uma conexão com o banco de dados
+   * Create a database connection
    */
   private function setConnection(){
     try{
@@ -70,7 +69,7 @@ class Database{
   }
 
   /**
-   * Método responsável por executar queries dentro do banco de dados
+   * Execute a query
    * @param  string $query
    * @param  array  $params
    * @return PDOStatement
@@ -86,27 +85,23 @@ class Database{
   }
 
   /**
-   * Método responsável por inserir dados no banco
+   * Insert data on database
    * @param  array $values [ field => value ]
-   * @return integer ID inserido
+   * @return integer Inserted Id
    */
   public function insert($values){
-    //DADOS DA QUERY
+    // Query data
     $fields = array_keys($values);
     $binds  = array_pad([],count($fields),'?');
 
-    //MONTA A QUERY
     $query = 'INSERT INTO '.$this->table.' ('.implode(',',$fields).') VALUES ('.implode(',',$binds).')';
-
-    //EXECUTA O INSERT
     $this->execute($query,array_values($values));
 
-    //RETORNA O ID INSERIDO
     return $this->connection->lastInsertId();
   }
 
   /**
-   * Método responsável por executar uma consulta no banco
+   * Execute a search query
    * @param  string $where
    * @param  string $order
    * @param  string $limit
@@ -114,68 +109,70 @@ class Database{
    * @return PDOStatement
    */
   public function select($where = null, $order = null, $limit = null, $fields = '*'){
-    //DADOS DA QUERY
     $where = strlen($where) ? 'WHERE '.$where : '';
     $order = strlen($order) ? 'ORDER BY '.$order : '';
     $limit = strlen($limit) ? 'LIMIT '.$limit : '';
 
-    //MONTA A QUERY
+    // Prepare query
     $query = 'SELECT '.$fields.' FROM '.$this->table.' '.$where.' '.$order.' '.$limit;
 
-    //EXECUTA A QUERY
     return $this->execute($query);
   }
 
+  /**
+   * Do a search query with inner join
+   * @param  string $secondTable
+   * @param  string $secondTableOnField
+   * @param  string $firstTableOnField
+   * @param  string $where
+   * @param  string $order
+   * @param  string $limit
+   * @param  string $fields
+   * @return PDOStatement
+   */
   public function selectWithInnerJoin($secondTable, $secondTableOnField, $firstTableOnField, $where = null, $order = null, $limit = null, $fields = '*'){
-    //DADOS DA QUERY
     $where = strlen($where) ? 'WHERE '.$where : '';
     $order = strlen($order) ? 'ORDER BY '.$order : '';
     $limit = strlen($limit) ? 'LIMIT '.$limit : '';
 
-    //MONTA A QUERY
+    // Prepare query
     $query = 'SELECT ' . $fields .
              ' FROM ' . $this->table . ' first_table' . 
              ' LEFT JOIN ' . $secondTable . ' second_table' .
              '    ON first_table.' . $firstTableOnField . ' = second_table.' . $secondTableOnField .
              ' ' . $where.' '.$order.' '.$limit;
 
-    //EXECUTA A QUERY
     return $this->execute($query);
   }
 
   /**
-   * Método responsável por executar atualizações no banco de dados
+   * Execute database updates queries
    * @param  string $where
    * @param  array $values [ field => value ]
    * @return boolean
    */
   public function update($where,$values){
-    //DADOS DA QUERY
+    // Query data
     $fields = array_keys($values);
 
-    //MONTA A QUERY
+    // Prepare query
     $query = 'UPDATE '.$this->table.' SET '.implode('=?,',$fields).'=? WHERE '.$where;
-
-    //EXECUTAR A QUERY
     $this->execute($query,array_values($values));
 
-    //RETORNA SUCESSO
     return true;
   }
 
   /**
-   * Método responsável por excluir dados do banco
+   * Execute delete queries
    * @param  string $where
    * @return boolean
    */
   public function delete($where){
-    //MONTA A QUERY
+    // Prepare query
     $query = 'DELETE FROM '.$this->table.' WHERE '.$where;
 
-    //EXECUTA A QUERY
     $this->execute($query);
 
-    //RETORNA SUCESSO
     return true;
   }
 

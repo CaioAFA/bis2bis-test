@@ -3,14 +3,47 @@
 namespace App\Models;
 
 class AdminModel {
-
+	/**
+	 * Admin Id
+	 * @var int
+	 */
   private $id;
-  private $name;
-  private $email;
-  private $password;
-  private $can_manage_posts;
-  private $can_manage_users;
-  private $can_manage_dumps;
+
+	/**
+	 * Admin name
+	 * @var string
+	 */
+	private $name;
+
+	/**
+	 * Admin email
+	 * @var string
+	 */
+	private $email;
+
+	/**
+	 * Admin password (encrypted)
+	 * @var string
+	 */
+	private $password;
+
+	/**
+	 * Admin can manage posts?
+	 * @var boolean
+	 */
+	private $can_manage_posts;
+
+	/**
+	 * Admin can manage users?
+	 * @var boolean
+	 */
+	private $can_manage_users;
+
+	/**
+	 * Admin can manage dumps?
+	 * @var boolean
+	 */
+	private $can_manage_dumps;
 
   public function getId(){
 		return $this->id;

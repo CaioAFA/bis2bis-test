@@ -8,9 +8,12 @@ use App\Response\Response;
 use App\Session\Session;
 
 class PostsDelete {
+  /**
+   * Controller main function
+   */
   public function execute(){
     if(!Session::canManagePosts()){
-      Response::sendUnhauthorizedResponse();
+      Response::sendUnauthorizedResponse();
     }
     
     $data = Request::getPayload();

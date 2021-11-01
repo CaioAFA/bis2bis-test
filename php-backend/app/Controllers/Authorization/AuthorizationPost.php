@@ -8,13 +8,16 @@ use App\Response\Response;
 use App\Session\Session;
 
 class AuthorizationPost {
+  /**
+   * Controller main function
+   */
   public function execute(){
     $data = Request::getPayload();
     $admin = AdminRepository::getAdminByEmail($data['email']);
 
-    if(!$admin) Response::sendUnhauthorizedResponse();
+    if(!$admin) Response::sendUnauthorizedResponse();
 
-    if(!password_verify($data['password'], $admin->getPassword())) Response::sendUnhauthorizedResponse();
+    if(!password_verify($data['password'], $admin->getPassword())) Response::sendUnauthorizedResponse();
 
     Session::createAdminSession($admin);
 

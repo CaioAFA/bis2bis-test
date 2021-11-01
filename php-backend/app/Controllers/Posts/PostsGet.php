@@ -6,6 +6,9 @@ use App\Repository\PostRepository;
 use App\Response\Response;
 
 class PostsGet {
+  /**
+   * Controller main function
+   */
   public function execute(){    
     $posts = PostRepository::getPosts();
 

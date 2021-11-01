@@ -6,6 +6,18 @@ use App\Response\Response;
 use App\Session\Session;
 
 class Route {
+  /**
+   * Handle application routes
+   * 
+   * @param array $routes 
+   * Send data like this:
+   * [
+   *   'GET' =>  [
+   *     'controller' => new AdminGet(),
+   *     'requireAuth' => true
+   *   ],
+   * ]
+   */
   public static function handleRouteMethods($routes){
     Session::initSession();
 
@@ -28,7 +40,7 @@ class Route {
 
     $adminSession = Session::getAdminSession();
     if($r['requireAuth'] && !$adminSession){
-      Response::sendUnhauthorizedResponse();
+      Response::sendUnauthorizedResponse();
     }
 
     $controller->execute();

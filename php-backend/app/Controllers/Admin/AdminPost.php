@@ -9,9 +9,12 @@ use App\Response\Response;
 use App\Session\Session;
 
 class AdminPost {
+  /**
+   * Controller main function
+   */
   public function execute(){
     if(!Session::canManageUsers()){
-      Response::sendUnhauthorizedResponse();
+      Response::sendUnauthorizedResponse();
     }
 
     $data = Request::getPayload();

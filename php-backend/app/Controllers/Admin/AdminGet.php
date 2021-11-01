@@ -7,9 +7,12 @@ use App\Response\Response;
 use App\Session\Session;
 
 class AdminGet {
+  /**
+   * Controller main function
+   */
   public function execute(){
     if(!Session::canManageUsers()){
-      Response::sendUnhauthorizedResponse();
+      Response::sendUnauthorizedResponse();
     }
 
     $admins = AdminRepository::getAdmins();

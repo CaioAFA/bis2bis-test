@@ -7,9 +7,12 @@ use App\Response\Response;
 use App\Session\Session;
 
 class DumpsDelete {
+  /**
+   * Controller main function
+   */
   public function execute(){
     if(!Session::canManageDumps()){
-      Response::sendUnhauthorizedResponse();
+      Response::sendUnauthorizedResponse();
     }
     
     $dumpsDir = __DIR__ . '/../../../dumps';

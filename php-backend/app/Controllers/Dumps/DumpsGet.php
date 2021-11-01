@@ -6,9 +6,12 @@ use App\Response\Response;
 use App\Session\Session;
 
 class DumpsGet {
+  /**
+   * Controller main function
+   */
   public function execute(){
     if(!Session::canManageDumps()){
-      Response::sendUnhauthorizedResponse();
+      Response::sendUnauthorizedResponse();
     }
     
     $dumpsDir = __DIR__ . '/../../../dumps';
@@ -23,6 +26,13 @@ class DumpsGet {
     Response::sendJsonResponse($dumps);
   }
 
+  /**
+   * Extract only the dump name from file path
+   * 
+   * @param String $filePath
+   * 
+   * @return String
+   */
   private function getDumpNameFromFilePath($filePath){
     $filePathSplitted = explode('/', $filePath);
     return end($filePathSplitted);

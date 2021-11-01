@@ -5,16 +5,51 @@ namespace App\Models;
 class PostModel {
 
   /**
-   * Identificador único da vaga
+   * Post id
    * @var integer
    */
   private $id;
-  private $admin_id;
-  private $title;
-  private $content;
-  private $image;
-  private $created_at;
-  private $edited_at;
+
+	/**
+	 * Admin id (author)
+	 * @var boolean
+	 */
+	private $admin_id;
+
+	/**
+	 * Post title
+	 * @var string
+	 */
+	private $title;
+
+	/**
+	 * Post content
+	 * @var string
+	 */
+	private $content;
+
+	/**
+	 * Post Image URL
+	 * @var string
+	 */
+	private $image;
+
+	/**
+	 * Post created date
+	 * @var string
+	 */
+	private $created_at;
+
+	/**
+	 * Post edited date
+	 * @var string
+	 */
+	private $edited_at;
+
+	/**
+	 * Post author name
+	 * @var string
+	 */
 	private $author_name;
 
   public function getId(){
