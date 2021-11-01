@@ -24,7 +24,7 @@
             <td>{{ post.title }}</td>
             <td>{{ post.content | truncate(50) }}</td>
             <td class="img-preview-wrapper">
-              <img class="img-preview" :src="post.image" :alt="post.title">
+              <img class="img-preview" :src="[post.image ? post.image : 'https://thumbs.dreamstime.com/b/no-image-available-icon-vector-illustration-flat-design-140633878.jpg']" :alt="post.title">
             </td>
             <td>{{ post.createdAt }}</td>
             <td>{{ post.editedAt }}</td>

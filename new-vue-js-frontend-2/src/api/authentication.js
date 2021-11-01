@@ -49,7 +49,7 @@ export const authenticate = (email, password) => {
         if (this.status === 200) {
           const response = JSON.parse(this.responseText)
           const sessionId = response['sessionId']
-          document.cookie = `PHPSESSID=${sessionId}; expires=0; path=/; domain=.teste-bis2bis.com.br;`
+          document.cookie = `PHPSESSID=${sessionId}; expires=0; path=/;`
 
           if(!store.state.adminModule.session.isLoggedIn){
             store.commit('adminModule/setAdminSessionData', response.sessionData)
