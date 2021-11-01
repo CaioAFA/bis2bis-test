@@ -67,7 +67,7 @@ services:
     networks:
       - my-container-network
 
-  frontend.teste-bis2bis.com.br:
+  vuefront:
     build: VueApp
     volumes:
       - ../new-vue-js-frontend-2:/app

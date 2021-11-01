@@ -1,15 +1,13 @@
+# API Config
 server {
 	listen 81;
 	listen [::]:81;
 	
 	# Diretório do seu app
-	#root /var/www/teste-bis2bis/php-backend/app/Routes;
 	root /var/www/html/app/Routes;
 
-	#index index.html index.htm index.php;
-
 	# Nome do seu site (DNS)
-	server_name api.teste-bis2bis.com.br default_server;
+	server_name localhost default_server;
         
 	location ~ \.php$ {
 		fastcgi_pass fpm:9000;
@@ -37,18 +35,14 @@ server {
 	}
 }
 
-#upstream frontend-teste-bis2bis {
-#	server vueapp:8080;
-#}
-
 server {
 	listen 80;
 	listen [::]:80;
 
-	server_name frontend.teste-bis2bis.com.br localhost;
+	server_name localhost;
 
   location / {
-		proxy_pass http://frontend.teste-bis2bis.com.br:8080;
+		proxy_pass http://vuefront:8080;
 		
 		proxy_http_version 1.1;
 		proxy_set_header Upgrade $http_upgrade;
@@ -57,31 +51,3 @@ server {
 		proxy_cache_bypass $http_upgrade;
   }
 }
-
-#server {
-#    server_name localhost;
-#    root /var/www/html;
-
-#    location = / {
-#        try_files @site @site;
-#    }
-
-#    location / {
-#        try_files $uri $uri/ @site;
-#    }
-
-#    location ~ \.php$ {
-#        return 404;
-#    }
-
-#    location @site {
-#        fastcgi_pass fpm:9000;
-#        include fastcgi_params;
-#        fastcgi_param  SCRIPT_FILENAME $document_root/index.php;
-        #uncomment when running via https
-        #fastcgi_param HTTPS on;
-#    }
-
-#    error_log /var/log/nginx/error.log;
-#    access_log /var/log/nginx/access.log;
-#}

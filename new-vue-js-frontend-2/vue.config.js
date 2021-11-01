@@ -4,6 +4,6 @@ module.exports = {
   ],
   devServer: {
     disableHostCheck: true,
-    host: 'frontend.teste-bis2bis.com.br'
+    host: 'vuefront'
   },
 }
