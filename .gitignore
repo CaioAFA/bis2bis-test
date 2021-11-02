@@ -1,4 +1,3 @@
 .vscode/
 php-backend/dumps/*
 !php-backend/dumps/.gitkeep
-php-backend/app/Env/Env.php
