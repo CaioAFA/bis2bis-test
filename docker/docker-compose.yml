@@ -5,13 +5,12 @@ services:
     # restart: always
     volumes:
       - ../php-backend:/var/www/html
-
+      - ./PHP7fpm/entrypoint.sh:/entrypoint.sh
+    command: ['sh', '/entrypoint.sh']
     ports:
       - "9000:9000"
-
     links:
       - mysql
-
     networks:
       - my-container-network
 

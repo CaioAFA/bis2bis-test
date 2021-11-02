@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '77dcf2be704783cd1f01a68094b6d5b0d33add8f',
+        'reference' => NULL,
         'name' => 'caio_arrabal/cb_blog',
         'dev' => true,
     ),
     'versions' => array(
         'caio_arrabal/cb_blog' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '77dcf2be704783cd1f01a68094b6d5b0d33add8f',
+            'reference' => NULL,
             'dev_requirement' => false,
         ),
     ),
