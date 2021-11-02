@@ -11,7 +11,7 @@ Arquivo ./database/generate-script.sql
 ## Executando o projeto
 ```bash
 # Dando permissão a pasta de Dumps
-chmod 777 dumps
+chmod 777 php-backend/dumps
 
 cd docker
 
