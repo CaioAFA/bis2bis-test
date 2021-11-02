@@ -11,6 +11,10 @@ Arquivo ./database/generate-script.sql
 ## Executando o projeto
 ```bash
 cd docker
+
+# Dando permissões para os arquivos entrypoint
+chmod +x */*.sh
+
 docker-compose up
 
 # Após subir os containeres, instalar o Banco de Dados
